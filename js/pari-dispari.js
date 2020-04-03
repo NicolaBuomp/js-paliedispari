@@ -7,8 +7,8 @@ var vincitore = document.getElementById('vincitore');
 
 
 
-var richiestaUtente = prompt('Scegli tra Pari e Dispari');
-richiestaUtente = richiestaUtente.charAt(0).toLowerCase() + richiestaUtente.slice(1);
+var richiestaUtente = prompt('Scegli True se vuoi pari o False se vuoi dispari');
+richiestaUtente = richiestaUtente.charAt(0).toUpperCase(0) + richiestaUtente.slice(1);
 console.log("La scelta dell'utente: " + richiestaUtente);
 richiestaUno.innerHTML = richiestaUtente;
 
@@ -16,12 +16,11 @@ richiestaUno.innerHTML = richiestaUtente;
 
 var richiestaNumUtente = parseInt(prompt('Scegli un numero da 1 a 5'));
 console.log("Il numero scelto dall'utente: " + richiestaNumUtente);
-var backup = richiestaNumUtente;
 richiestaDue.innerHTML = richiestaNumUtente;
 
 
 
-var number = getRandomNumber(1, 6);
+var number = getRandomNumber(1, 5);
 console.log("Il numero random generato è: " + number);
 numeroRandom.innerHTML = number;
 
@@ -31,45 +30,32 @@ var somma = number + richiestaNumUtente;
 console.log("La somma dei due numeri è: " + somma);
 sommaNumeri.innerHTML = somma;
 
+var pariDispari = isPari(somma);
 
-// if (isPari(somma)) {
-//     console.log('La somma dei due numeri è PARI');
-//     if (isPari(backup)) {
-//         console.log('Hai vinto!')
-//     } else {
-//         console.log('Hai perso!')
-//     }
-// } else {
-//     console.log('La somma dei due numeri è DISPARI');
-//     if (!isPari(backup)) {
-//         console.log('Hai vinto!')
-//     } else {
-//         console.log('Hai perso!')
-//     }
-// }
-
-if (isPari(somma) == 'Pari') {
-    console.log('Pari');
+if (pariDispari == true) {
     risPariDispari.innerHTML = 'Pari';
+
 } else {
-    console.log('Dispari');
     risPariDispari.innerHTML = 'Dispari';
+
+}
+if (richiestaUtente == 'Pari') {
+    richiestaUtente = true;
+} else {
+    richiestaUtente = false;
 }
 
-if (richiestaUtente == isPari(somma)) {
-    console.log('Hai vinto');
-    vincitore.innerHTML = 'Hai vinto!';
+if (richiestaUtente == pariDispari) {
+    vincitore.innerHTML = 'Hai vinto';
 
 } else {
-    console.log('Hai perso');
-    vincitore.innerHTML = 'Hai perso!';
+    vincitore.innerHTML = 'Vince il computer';
 
 }
-
 
 // FUNCTION NUMERO RANDOM
 function getRandomNumber(min, max) {
-    var random = Math.floor(Math.random() * (max - min)) + min;
+    var random = Math.floor(Math.random() * (max - min + 1)) + min;
     return random;
 }
 

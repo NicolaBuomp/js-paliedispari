@@ -6,7 +6,7 @@ var outputNome = document.getElementById('output-nome');
 
 
 var nome = prompt('Inserisci un nome').trim();
-nome = nome.charAt(0).toLowerCase() + nome.slice(1);
+nome = nome.toLowerCase();
 console.log(nome);
 richiestaNome.innerHTML = nome;
 
@@ -22,7 +22,7 @@ if (nome == nomeInverito) {
 
 } else {
     console.log('La parola da te inserita al rovescio diventerà ' + nomeInverito);
-    outputNome.innerHTML = 'La parola da te inserita al rovescio diventerà ' + nomeInverito;
+    outputNome.innerHTML = 'La parola da te inserita non è palindroma ';
 }
 
 
